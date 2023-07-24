@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #000814;
+  color: white;
+}
+
+header {
+  width: 100vw;
+  background-color: #001d3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+header h1 {
+  color: #ffc300;
+}
+
+header menu {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  padding: inherit;
+}
+
+menu .filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 15px;
+}
+
+menu .filters input {
+  accent-color: #ffc300;
+}
+
+header menu li {
+  list-style: none;
+}
+
+menu li label {
+  margin-right: 3px;
+}
+
+menu #search {
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 5px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: .9em;
+}
+
+menu #search::placeholder {
+  color: rgba(255, 255, 255, 0.705);
+}
+
+main {
+  padding: 10px;
+}
+
+main .card {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 2px #ffffff36;
+}
+
+main .card-form {
+  margin-bottom: 20px;
+}
+
+.card-form * {
+  display: block;
+}
+
+.card-form label {
+  margin-bottom: 5px;
+}
+
+.card-form input[type=text] {
+  background-color: transparent;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  padding: 5px;
+  font-size: .9em;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.card-form input[type=text]::placeholder {
+  color: rgba(255, 255, 255, 0.705);
+}
+
+.card-form input[type=submit] {
+  background-color: rgb(0, 143, 0);
+  border: 2px solid white;
+  padding: 5px;
+  font-size: .9em;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.list {
+  overflow-y: scroll;
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.card-list .list-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-list .card-task {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.card-task div {
+  padding: 5px;
+}
+
+.card-task .details-task .title {
+  text-align: center;
+  font-size: .9em;
+  margin-bottom: 5px;
+}
+
+.card-task .details-task .description {
+  font-size: .9em;
+  margin-bottom: 5px;
+}
+
+hr {
+  margin-bottom: 5px;
+}
+
+.actions-task input[type=checkbox] {
+  margin-left: 3px;
+  accent-color: #ffc300;
+}
+
+.card-task .actions-task {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.actions-task .actions-btns button {
+  padding: 2px 5px;
+  border: 2px solid white;
+  font-weight: bold;
+  color: white;
+  border-radius: 3px;
+  font-size: .75em;
+}
+
+.actions-btns #edit {
+  background-color: rgb(0, 91, 228);
+  margin-right: 3px;
+}
+
+.actions-btns #delete {
+  background-color: rgb(228, 0, 0);
+}
+
+/* Alert */
+
+.alert {
+  width: 100vw;
+  border: none;
+  padding: 10px;
+  position: absolute;
+  top: calc(90vh);
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+dialog[open] {
+  animation: myFadeIn .5s ease normal;
+}
+
+@keyframes myFadeIn{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.alert section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.alert button {
+  border: 2px solid white;
+  background-color: transparent;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.success {
+  background-color: rgb(0, 143, 0);
+}
+
+.danger {
+  background-color: rgb(228, 0, 0);
+}
+
+/* Edit Modal */
+.modal {
+  border: 2px solid white;
+  background-color: #000814;
+  color: white;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 10px;
+  padding: 5px 10px;
+}
+
+.modal .header button {
+  padding: 3px 10px;
+  background-color: transparent;
+  border: 2px solid rgb(228, 0, 0);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.modal .header + section {
+  padding: 0 10px 10px;
+
+}
+
+.modal .header + section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal .header + section input[type=text],
+.modal .header + section textarea {
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  padding: 5px 3px;
+}
+
+input[type=checkbox] {
+  accent-color: #ffc300;
+}
+
+.modal .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.modal .actions .action_check * {
+  display: inline-block;
+}
+
+.modal .actions input[type=submit] {
+  background-color: transparent;
+  border: 2px solid rgb(0, 143, 0);
+  color: white;
+  padding: 3px 5px;
+  font-size: bold;
+  border-radius: 5px;
+}
