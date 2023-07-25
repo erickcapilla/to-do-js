@@ -96,7 +96,7 @@ export default class Task {
     const description = document.getElementById('modalDescription').value
     const done = document.getElementById('modalCheckDone').checked
 
-    if(!itle || !description) {
+    if(!title || !description) {
       new Alert('danger', 'success', 'You may to set all data')
     } else {
       tasks[id] = {
