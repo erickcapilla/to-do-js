@@ -327,13 +327,11 @@ input[type=checkbox] {
 
 @media screen and (min-width: 590px) {
   menu .filters {
-    border: 1px solid red;
     width: 100%;
     margin-right: 15px;
   }
 
   menu > li {
-    border: 1px solid red;
     width: 100%;
   }
 
@@ -347,7 +345,6 @@ input[type=checkbox] {
   main {
     max-width: 100vw;
     display: flex;
-    border: 1px solid red;
     justify-content: space-between;
     height: 75vh;
   }
@@ -360,15 +357,9 @@ input[type=checkbox] {
     margin: 0 20px;
   }
 
-  main .card-form {
-    height: 200px;
-  }
-
   .list {
     overflow-y: scroll;
     height: 90%;
-    
-    border: 1px solid red;
   }
   
 }
@@ -378,7 +369,8 @@ input[type=checkbox] {
     font-size: 1.2em;
   }
   main,
-  menu {
+  menu,
+  .alert {
     max-width: 1024px;
   }
 }
