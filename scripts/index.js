@@ -1,9 +1,10 @@
 import FormToDo from "./formToDo.js"
-import Task from "./task.js";
+import Task from "./task.js"
 
 document.addEventListener('DOMContentLoaded', () => {
   new FormToDo()
-  new Task().showTasks()
+  const tasks = new Task()
+  tasks.showTasks(tasks.getTasks())
 
   /* ***** Alert ***** */
 

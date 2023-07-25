@@ -3,15 +3,17 @@ import Alert from "./alert.js";
 export default class Task {
   constructor() {
     this.id = this.getTasks().length
-    console.log(this.getTasks().length);
+
+    this.filterTask()
+    this.searchTasks()
   }
 
   getTasks() {
     return JSON.parse(localStorage.getItem('tasks')) ?? []
   }
 
-  showTasks() {
-    const tasks = this.getTasks()
+  showTasks(tasks) {
+    //tasks = this.filterTask() ?? this.getTasks()
     
     const list = document.getElementById('listTasks')
     list.innerHTML = ''
@@ -21,7 +23,6 @@ export default class Task {
       const hTitle = document.createElement('h6')
       hTitle.classList.add('title')
       hTitle.innerText = task.title
-      console.log(task.title);
       const pDescription = document.createElement('p')
       pDescription.classList.add('description')
       pDescription.innerText = task.description
@@ -73,13 +74,11 @@ export default class Task {
 
       list.appendChild(divCard)
       
-      console.log(i);
     });
   }
 
   addTask(title, description) {
     let tasks = this.getTasks()
-    console.log(tasks);
     tasks.push({
       id: this.id,
       title,
@@ -110,12 +109,11 @@ export default class Task {
       new Alert('success', 'danger', 'Task updated')
 
       modalUpdate.close()
-      this.showTasks()
+      this.showTasks(tasks)
     }
   }
 
   onChecked(id, checkbox) {
-    console.log(checkbox.checked);
     const tasks = this.getTasks()
 
     tasks[id].done = checkbox.checked
@@ -126,11 +124,11 @@ export default class Task {
   deleteTask(id) {
     const tasks = this.getTasks()
 
-    console.log(tasks.splice(id, 1));
+    tasks.splice(id, 1)
 
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
-    this.showTasks()
+    this.showTasks(tasks)
     new Alert('danger', 'success', 'Task deleted')
   }
 
@@ -152,5 +150,48 @@ export default class Task {
       e.preventDefault()
       this.updateTask(id, modalUpdate)
     }
+  }
+
+  filterTask() {
+    let newTasks
+    
+    const filters = document.querySelectorAll('input[name="filter"]')
+    
+    filters.forEach((filter) => {
+      filter.addEventListener('change', () => {
+        const tasks = this.getTasks()
+        if(filter.value == 'all') {
+          newTasks = [...tasks]
+        }
+
+        if(filter.value == 'done') {
+          newTasks = tasks.filter((t) => t.done === true)
+        }
+
+        if(filter.value == 'noDone') {
+          newTasks = tasks.filter((t) => t.done === false)
+        }
+
+        this.showTasks(newTasks)
+      })
+    })
+  }
+
+  searchTasks() {
+    const tasks = this.getTasks()
+    const searchInput = document.getElementById('search')
+    let newTasks
+
+    searchInput.addEventListener('input', () => {
+      newTasks = tasks.filter((task) => {
+        const title = task.title.toLowerCase()
+        const description = task.description.toLowerCase()
+        const keyword = searchInput.value.toLowerCase()
+
+        return title.includes(keyword) || description.includes(keyword)
+      })
+
+      this.showTasks(newTasks)
+    })
   }
 }

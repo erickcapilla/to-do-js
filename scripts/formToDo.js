@@ -22,7 +22,7 @@ export default class FormToDo {
       this.formTitle.value= ''
       this.formDescription.value = ''
       new Alert('success', 'danger', 'Task added')
-      task.showTasks()
+      task.showTasks(task.getTasks())
     }
   }
 }
